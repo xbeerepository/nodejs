@@ -1,14 +1,10 @@
 schema-version: 1.0
 
-port: "{% port %}"
-
-persistent-dir: app:{% app %}
 
 var:
   version: 12.18.3
   yarnVersion: 1.22.4
   app: /app
-  port: 3000
   user: default
 
 provision:
@@ -18,18 +14,18 @@ provision:
   - systempath: /opt/yarn-v{% yarnVersion %}/bin
   - env: NODE_VERSION={% version %}
   - env: NODE_PORT={% port %}
-  - user: "{% user %}"
 
-deploy:
-  - copy:
-     resource: app
-     topath: "{% app %}"
-  - shell:
-     cmd: npm install
-     directory: "{% app %}"
+# deploy:
+#   - copy:
+#      resource: app
+#      topath: "{% app %}"
+#   - shell:
+#      cmd: npm install
+#      directory: "{% app %}"
 
 directory: "{% app %}"
 user: "{% user %}" 
+volume: app:{% app %}:.
 
 command:
   node: node {{ .args }}
