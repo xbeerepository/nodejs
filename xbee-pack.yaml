@@ -1,0 +1,14 @@
+schema-version: 1.0
+
+in:
+  version: 16.17.1
+
+dependency: xz
+
+provision:
+  - url: https://nodejs.org/dist/v{% version %}/node-v{% version %}-linux-x64.tar.xz
+  - systempath: /opt/node-v{% version %}-linux-x64/bin
+
+command:
+  node: node
+  npm: npm
