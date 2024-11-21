@@ -1,13 +1,13 @@
 schema-version: 1.0
 
-in:
-  version: 16.17.1
+var:
+  version: 22.11.0
 
-dependency: xz
+builder: xz
 
 provision:
-  - url: https://nodejs.org/dist/v{% version %}/node-v{% version %}-linux-x64.tar.xz
-  - systempath: /opt/node-v{% version %}-linux-x64/bin
+  - url: https://nodejs.org/dist/v{{ .version }}/node-v{{ .version }}-linux-x64.tar.xz
+  - systempath: /opt/node-v{{ .version }}-linux-x64/bin
 
 command:
   node: node
